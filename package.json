@@ -1,0 +1,27 @@
+{
+    "name": "projectname",
+    "version": "1.0.0",
+    "description": "Template for Service (NodeJS)",
+    "main": "app/index.js",
+    "scripts": {
+        "live": "NODE_ENV=live node --experimental-specifier-resolution=node app",
+        "dev": "NODE_ENV=dev node --experimental-specifier-resolution=node app",
+        "init": "npm install && NODE_ENV=dev node --experimental-specifier-resolution=node install/init",
+        "install-service": "node --experimental-specifier-resolution=node install/service install",
+        "uninstall-service": "node --experimental-specifier-resolution=node install/service uninstall",
+        "create-certs": "node --experimental-specifier-resolution=node install/certs"
+    },
+    "type": "module",
+    "dependencies": {},
+    "devDependencies": {
+        "eslint": "^8.38.0",
+        "eslint-config-airbnb": "^19.0.4",
+        "eslint-config-prettier": "^8.8.0",
+        "eslint-plugin-import": "^2.27.5",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-prettier": "^4.2.1",
+        "prettier": "^2.8.7"
+    },
+    "author": "MAXI",
+    "license": "MIT"
+}

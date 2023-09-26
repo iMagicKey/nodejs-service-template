@@ -1,5 +1,4 @@
 # Logs
-logs
 *.log
 npm-debug.log*
 yarn-debug.log*
@@ -128,3 +127,8 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+app/logs/*
+app/config/dev/*
+app/config/live/certs/*
+!app/config/live/certs/.gitignore
