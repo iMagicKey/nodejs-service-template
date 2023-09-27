@@ -9,7 +9,7 @@ FOLDER_NAMES.forEach((folderName) => {
     if (!existsSync(folderPath)) mkdirSync(folderPath)
 })
 
-const LOG_LEVELS = ['debug', 'info', 'warning', 'error', 'critical', 'service-output', 'service-error']
+const LOG_LEVELS = ['log', 'debug', 'error', 'warn', 'info', 'crit', 'service-output', 'service-error']
 LOG_LEVELS.forEach((logLevel) => {
     const filePath = `${ROOT_PATH}/app/logs/${logLevel}.log`
     if (!existsSync(filePath)) writeFileSync(filePath, '')
