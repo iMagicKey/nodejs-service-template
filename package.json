@@ -12,7 +12,10 @@
         "create-certs": "node --experimental-specifier-resolution=node install/certs"
     },
     "type": "module",
-    "dependencies": {},
+    "dependencies": {
+        "redis": "^4.6.10",
+        "redis-commands": "^1.7.0"
+    },
     "devDependencies": {
         "eslint": "^8.38.0",
         "eslint-config-airbnb": "^19.0.4",

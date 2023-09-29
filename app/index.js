@@ -22,4 +22,11 @@ CONFIG_FILES.forEach((configFile) => {
 Logger.setConfig(global.config.logger)
 global.logger = Logger
 
+const errorEvents = ['uncaughtException', 'unhandledRejection']
+errorEvents.forEach((eventName) => {
+    process.on(eventName, (err) => {
+        global.logger.crit(eventName, err)
+    })
+})
+
 run()

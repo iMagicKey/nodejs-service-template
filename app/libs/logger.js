@@ -39,15 +39,7 @@ export default class {
     static write(level, prefix, data) {
         const logTime = this.getCurrentDateTime()
         const logHead = `[${logTime}] (${prefix})`
-        const logData = data
-            .map((variable) => {
-                if (typeof variable === 'string') {
-                    return variable
-                }
-
-                return util.inspect(variable)
-            })
-            .join(' ')
+        const logData = data.map((variable) => (typeof variable === 'string' ? variable : util.inspect(variable))).join(' ')
 
         this.writeToConsole(logHead, data)
         this.writeToFile(`${logHead} ${logData}\n`, level)

@@ -1,0 +1,10 @@
+{
+    "redis": {
+        "username": "root",
+        "password": "password",
+        "socket": {
+            "host": "host",
+            "port": 12345
+        }
+    }
+}
