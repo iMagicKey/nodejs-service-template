@@ -68,7 +68,7 @@ export default async function () {
                 display_name: displayName,
                 platform,
                 image_url: imageUrl,
-                blocked: blocked !== '0',
+                blocked: blocked !== '"0"',
                 foreign_id: foreignId,
                 createdAt: new Date(createdAt).getTime(),
                 updatedAt: new Date(updatedAt).getTime(),
@@ -76,14 +76,33 @@ export default async function () {
         })
 
     const start = Date.now()
+
     const channel = Channel.create(data[0])
     channel.save()
+    // console.log(data[0])
     // data.forEach((channelData) => {
-    //     const channel = Channel.create(channelData)
-    //     channel.save()
+    //     const allowedPlatforms = ['twitch', 'youtube', 'trovo', 'wasd']
+    //     if (allowedPlatforms.includes(channelData.platform)) {
+    //         const channel = Channel.create(channelData)
+    //         channel.save()
+    //     }
     // })
-
-    // const channels = await Channel.findOneBy({ display_name: 'iMagicKey' })
+    // const channels = await Channel.findBy2({ platform: 'twitch', foreign_id: 699632104 })
+    // const channels = await Channel.findBy2({
+    //     // platform: 'twitch',
+    //     blocked: true,
+    //     // id: 42082,
+    //     // foreign_id: 864465139,
+    // })
+    // // // const channels = await Channel.findAll()
+    // // // const channel = await Channel.findOneBy({ display_name: 'iMagicKey' })
+    // // // const channel = await Channel.findOneBy({ id: '1' })
     // console.log(channels)
+
+    // const a1 = await Channel.findOneBy()
+    // channel.id = 
+    // channel.save()
+    // console.log(a1)
+
     console.log((Date.now() - start) / 1000)
 }

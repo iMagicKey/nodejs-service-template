@@ -13,8 +13,7 @@
     },
     "type": "module",
     "dependencies": {
-        "redis": "^4.6.10",
-        "redis-commands": "^1.7.0"
+        "redis": "^4.6.10"
     },
     "devDependencies": {
         "eslint": "^8.38.0",
