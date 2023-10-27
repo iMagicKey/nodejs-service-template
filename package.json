@@ -6,15 +6,14 @@
     "scripts": {
         "live": "NODE_ENV=live node --experimental-specifier-resolution=node app",
         "dev": "NODE_ENV=dev node --experimental-specifier-resolution=node app",
-        "init": "npm install && NODE_ENV=dev node --experimental-specifier-resolution=node install/init",
-        "install-service": "node --experimental-specifier-resolution=node install/service install",
-        "uninstall-service": "node --experimental-specifier-resolution=node install/service uninstall",
-        "create-certs": "node --experimental-specifier-resolution=node install/certs"
+        "init": "npm install && NODE_ENV=dev node --experimental-specifier-resolution=node system/init",
+        "install-service": "node --experimental-specifier-resolution=node system/service install",
+        "uninstall-service": "node --experimental-specifier-resolution=node system/service uninstall",
+        "create-certs": "node --experimental-specifier-resolution=node system/certs",
+        "clear-logs": "node --experimental-specifier-resolution=node system/logs"
     },
     "type": "module",
-    "dependencies": {
-        "redis": "^4.6.10"
-    },
+    "dependencies": {},
     "devDependencies": {
         "eslint": "^8.38.0",
         "eslint-config-airbnb": "^19.0.4",
@@ -24,6 +23,6 @@
         "eslint-plugin-prettier": "^4.2.1",
         "prettier": "^2.8.7"
     },
-    "author": "MAXI",
+    "author": "DoubleFun",
     "license": "MIT"
 }
