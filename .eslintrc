@@ -1,7 +1,7 @@
 {
     "extends": ["airbnb", "eslint-config-airbnb-base", "prettier"],
     "rules": {
-        "indent": ["error", 4],
+        "indent": ["error", 4, { "SwitchCase": 1 }],
         "semi": "off",
         "prettier/prettier": ["error"],
         "no-unused-vars": "warn",

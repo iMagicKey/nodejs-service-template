@@ -7,14 +7,14 @@ export default class {
         prefix: 'DEFAULT',
     }
 
-    static setConfig(config) {
+    static setConfig = (config) => {
         this.config = {
             ...this.config,
             ...config,
         }
     }
 
-    static getCurrentDateTime() {
+    static getCurrentDateTime = () => {
         const now = new Date()
         return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(
             now.getHours()
@@ -23,20 +23,20 @@ export default class {
         ).padStart(3, '0')}`
     }
 
-    static writeToConsole(logEntry, data) {
+    static writeToConsole = (logEntry, data) => {
         if (this.config.output.includes('console')) {
             console.log(logEntry, ...data)
         }
     }
 
-    static writeToFile(logEntry, level) {
+    static writeToFile = (logEntry, level) => {
         if (this.config.output.includes('file')) {
             const LOG_FILE_PATH = `./app/logs/${level}.log`
             fs.appendFileSync(LOG_FILE_PATH, logEntry)
         }
     }
 
-    static write(level, prefix, data) {
+    static write = (level, prefix, data) => {
         const logTime = this.getCurrentDateTime()
         const logHead = `[${logTime}] (${prefix})`
         const logData = data.map((variable) => (typeof variable === 'string' ? variable : util.inspect(variable))).join(' ')
@@ -45,51 +45,51 @@ export default class {
         this.writeToFile(`${logHead} ${logData}\n`, level)
     }
 
-    static log(...args) {
+    static log = (...args) => {
         this.write('log', this.config.prefix, args)
     }
 
-    static debug(...args) {
+    static debug = (...args) => {
         this.write('debug', this.config.prefix, args)
     }
 
-    static error(...args) {
+    static error = (...args) => {
         this.write('error', this.config.prefix, args)
     }
 
-    static warn(...args) {
+    static warn = (...args) => {
         this.write('warn', this.config.prefix, args)
     }
 
-    static info(...args) {
+    static info = (...args) => {
         this.write('info', this.config.prefix, args)
     }
 
-    static crit(...args) {
+    static crit = (...args) => {
         this.write('crit', this.config.prefix, args)
     }
 
-    static plog(prefix, ...args) {
+    static plog = (prefix, ...args) => {
         this.write('log', prefix, args)
     }
 
-    static pdebug(prefix, ...args) {
+    static pdebug = (prefix, ...args) => {
         this.write('debug', prefix, args)
     }
 
-    static perror(prefix, ...args) {
+    static perror = (prefix, ...args) => {
         this.write('error', prefix, args)
     }
 
-    static pwarn(prefix, ...args) {
+    static pwarn = (prefix, ...args) => {
         this.write('warn', prefix, args)
     }
 
-    static pinfo(prefix, ...args) {
+    static pinfo = (prefix, ...args) => {
         this.write('info', prefix, args)
     }
 
-    static pcrit(prefix, ...args) {
+    static pcrit = (prefix, ...args) => {
         this.write('crit', prefix, args)
     }
 }

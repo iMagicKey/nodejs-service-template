@@ -18,21 +18,20 @@ if (action === 'install') {
     writeFileSync(
         SERVICE_FILE_PATH,
         `[Unit]
-    Description=${SERVICE_NAME}
-    After=multi-user.target
+        Description=${SERVICE_NAME}
+        After=multi-user.target
 
-    [Service]
-    WorkingDirectory=${ROOT_PATH}
-    ExecStart=/usr/bin/npm run live
-    Restart=always
-    RestartSec=10
-    StandardOutput=append:${ROOT_PATH}/logs/service-output.log
-    StandardError=append:${ROOT_PATH}/logs/service-error.log
-    SyslogIdentifier=${SERVICE_NAME}
+        [Service]
+        WorkingDirectory=${ROOT_PATH}
+        ExecStart=/usr/bin/npm run live
+        Restart=always
+        RestartSec=10
+        StandardOutput=append:${ROOT_PATH}/logs/service-output.log
+        StandardError=append:${ROOT_PATH}/logs/service-error.log
+        SyslogIdentifier=${SERVICE_NAME}
 
-    [Install]
-    WantedBy=multi-user.target
-    `
+        [Install]
+        WantedBy=multi-user.target`.replaceAll('    ', '')
     )
     console.log('Service file created')
     execSync(`ln ${SERVICE_FILE_PATH} /etc/systemd/system/${SERVICE_NAME}.service`)

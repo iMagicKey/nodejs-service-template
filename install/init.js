@@ -3,7 +3,7 @@ import { resolve } from 'path'
 
 const ROOT_PATH = resolve()
 
-const FOLDER_NAMES = ['data', 'logs', 'resources', 'storage']
+const FOLDER_NAMES = ['data', 'logs', 'resources', 'storage', 'config/dev']
 FOLDER_NAMES.forEach((folderName) => {
     const folderPath = `${ROOT_PATH}/app/${folderName}/`
     if (!existsSync(folderPath)) mkdirSync(folderPath)

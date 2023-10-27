@@ -5,7 +5,7 @@ import Channel from './db/models/channel'
 
 // eslint-disable-next-line func-names
 export default async function () {
-    await Redis.connect()
+    // await Redis.connect()
 
     // global.logger.log('log', 0, 0.23)
     // global.logger.error('error', 1)
@@ -55,30 +55,30 @@ export default async function () {
     //     user.save()
     // }
 
-    const data = fs
-        .readFileSync('./app/data/channels.csv', 'utf8')
-        .split(/[\r\n]+/)
-        .map((val) => {
-            // eslint-disable-next-line no-unused-vars
-            const [id, channelId, displayName, platform, imageUrl, updatedAt, createdAt, blocked, foreignId] = val.split(';')
+    // const data = fs
+    //     .readFileSync('./app/data/channels.csv', 'utf8')
+    //     .split(/[\r\n]+/)
+    //     .map((val) => {
+    //         // eslint-disable-next-line no-unused-vars
+    //         const [id, channelId, displayName, platform, imageUrl, updatedAt, createdAt, blocked, foreignId] = val.split(';')
 
-            return {
-                id: parseInt(id, 10),
-                channel_id: channelId,
-                display_name: displayName,
-                platform,
-                image_url: imageUrl,
-                blocked: blocked !== '"0"',
-                foreign_id: foreignId,
-                createdAt: new Date(createdAt).getTime(),
-                updatedAt: new Date(updatedAt).getTime(),
-            }
-        })
+    //         return {
+    //             id: parseInt(id, 10),
+    //             channel_id: channelId,
+    //             display_name: displayName,
+    //             platform,
+    //             image_url: imageUrl,
+    //             blocked: blocked !== '"0"',
+    //             foreign_id: foreignId,
+    //             createdAt: new Date(createdAt).getTime(),
+    //             updatedAt: new Date(updatedAt).getTime(),
+    //         }
+    //     })
 
-    const start = Date.now()
+    // const start = Date.now()
 
-    const channel = Channel.create(data[0])
-    channel.save()
+    // const channel = Channel.create(data[0])
+    // channel.save()
     // console.log(data[0])
     // data.forEach((channelData) => {
     //     const allowedPlatforms = ['twitch', 'youtube', 'trovo', 'wasd']
@@ -104,5 +104,5 @@ export default async function () {
     // channel.save()
     // console.log(a1)
 
-    console.log((Date.now() - start) / 1000)
+    // console.log((Date.now() - start) / 1000)
 }
