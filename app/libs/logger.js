@@ -1,11 +1,13 @@
 import fs from 'fs'
 import util from 'util'
 
-export default class {
+export default class Logger {
     static config = {
         output: ['console'],
         prefix: 'DEFAULT',
     }
+
+    static LOG_LEVELS = ['log', 'debug', 'error', 'warn', 'info', 'crit']
 
     static setConfig = (config) => {
         this.config = {
@@ -16,11 +18,15 @@ export default class {
 
     static getCurrentDateTime = () => {
         const now = new Date()
-        return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(
-            now.getHours()
-        ).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}.${String(
-            now.getMilliseconds()
-        ).padStart(3, '0')}`
+        const year = now.getFullYear()
+        const month = String(now.getMonth() + 1).padStart(2, '0')
+        const date = String(now.getDate()).padStart(2, '0')
+        const hours = String(now.getHours()).padStart(2, '0')
+        const minutes = String(now.getMinutes()).padStart(2, '0')
+        const seconds = String(now.getSeconds()).padStart(2, '0')
+        const milliseconds = String(now.getMilliseconds()).padStart(3, '0')
+
+        return `${year}-${month}-${date} ${hours}:${minutes}:${seconds}.${milliseconds}`
     }
 
     static writeToConsole = (logEntry, data) => {
@@ -45,51 +51,17 @@ export default class {
         this.writeToFile(`${logHead} ${logData}\n`, level)
     }
 
-    static log = (...args) => {
-        this.write('log', this.config.prefix, args)
-    }
+    static generateLogMethods() {
+        this.LOG_LEVELS.forEach((level) => {
+            this[level] = (...args) => {
+                this.write(level, this.config.prefix, args)
+            }
 
-    static debug = (...args) => {
-        this.write('debug', this.config.prefix, args)
-    }
-
-    static error = (...args) => {
-        this.write('error', this.config.prefix, args)
-    }
-
-    static warn = (...args) => {
-        this.write('warn', this.config.prefix, args)
-    }
-
-    static info = (...args) => {
-        this.write('info', this.config.prefix, args)
-    }
-
-    static crit = (...args) => {
-        this.write('crit', this.config.prefix, args)
-    }
-
-    static plog = (prefix, ...args) => {
-        this.write('log', prefix, args)
-    }
-
-    static pdebug = (prefix, ...args) => {
-        this.write('debug', prefix, args)
-    }
-
-    static perror = (prefix, ...args) => {
-        this.write('error', prefix, args)
-    }
-
-    static pwarn = (prefix, ...args) => {
-        this.write('warn', prefix, args)
-    }
-
-    static pinfo = (prefix, ...args) => {
-        this.write('info', prefix, args)
-    }
-
-    static pcrit = (prefix, ...args) => {
-        this.write('crit', prefix, args)
+            this[`p${level}`] = (prefix, ...args) => {
+                this.write(level, prefix, args)
+            }
+        })
     }
 }
+
+Logger.generateLogMethods()

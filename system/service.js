@@ -8,12 +8,18 @@ const [SERVICE_NAME] = ROOT_PATH.split('/').slice(-1)
 const SERVICE_FILE_PATH = `${ROOT_PATH}/installed.service`
 
 const action = process.argv[2]
+const SERVICE_LOG_LEVELS = ['service-output', 'service-error']
 
 if (action === 'install') {
     if (existsSync(SERVICE_FILE_PATH)) {
         console.log('Service already installed.')
         exit(0)
     }
+
+    SERVICE_LOG_LEVELS.forEach((logLevel) => {
+        const filePath = `${ROOT_PATH}/app/logs/${logLevel}.log`
+        if (!existsSync(filePath)) writeFileSync(filePath, '')
+    })
 
     writeFileSync(
         SERVICE_FILE_PATH,
@@ -54,5 +60,11 @@ if (action === 'uninstall') {
     REMOVE_FILE_PATHS.forEach((filePath) => {
         if (existsSync(filePath)) rmSync(filePath)
     })
+
+    SERVICE_LOG_LEVELS.forEach((logLevel) => {
+        const filePath = `${ROOT_PATH}/app/logs/${logLevel}.log`
+        if (existsSync(filePath)) rmSync(filePath)
+    })
+
     console.log('Service uninstalled.')
 }
