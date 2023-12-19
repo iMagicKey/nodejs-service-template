@@ -4,9 +4,9 @@
     "description": "Template for Service (NodeJS)",
     "main": "app/index.js",
     "scripts": {
-        "live": "NODE_ENV=live node --experimental-specifier-resolution=node app",
-        "dev": "NODE_ENV=dev node --experimental-specifier-resolution=node app",
-        "init": "npm install && NODE_ENV=dev node --experimental-specifier-resolution=node system/init",
+        "live": "APP_ENV=live node --experimental-specifier-resolution=node app",
+        "dev": "APP_ENV=dev node --experimental-specifier-resolution=node app",
+        "init": "npm install && APP_ENV=dev node --experimental-specifier-resolution=node system/init",
         "install-service": "node --experimental-specifier-resolution=node system/service install",
         "uninstall-service": "node --experimental-specifier-resolution=node system/service uninstall",
         "create-certs": "node --experimental-specifier-resolution=node system/certs",

@@ -4,7 +4,7 @@ import utils from './utils'
 export default () => {
     const config = {}
 
-    const CONFIG_DIR = `./app/config/${process.env.NODE_ENV}`
+    const CONFIG_DIR = `./app/config/${process.env.APP_ENV}`
     const ENTRIES = fs.readdirSync(CONFIG_DIR)
     const CONFIG_FILES = ENTRIES.filter((val) => val.slice(-5) === '.json')
 
