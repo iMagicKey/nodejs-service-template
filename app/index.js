@@ -1,4 +1,4 @@
-import run from './code'
+import run from './code/index'
 import Logger from './libs/logger'
 import getConfig from './libs/get-config'
 
