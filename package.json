@@ -10,7 +10,9 @@
         "install-service": "node --experimental-specifier-resolution=node system/service install",
         "uninstall-service": "node --experimental-specifier-resolution=node system/service uninstall",
         "create-certs": "node --experimental-specifier-resolution=node system/certs",
-        "clear-logs": "node --experimental-specifier-resolution=node system/logs"
+        "clear-logs": "node --experimental-specifier-resolution=node system/logs",
+        "build": "next build",
+        "lint": "next lint"
     },
     "type": "module",
     "dependencies": {
