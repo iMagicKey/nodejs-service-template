@@ -1,4 +1,4 @@
-# NodeJS Service Template
+# NodeJS + NextJS Service Template 
 
 This repository provides a template for creating a NodeJS service. It includes configurations for environment setup, scripts for development, installation, and other useful utilities.
 
@@ -75,7 +75,7 @@ After the installation and initialization, you can use the following scripts pro
 
 ## Configuration
 
-- **Environment Variables**: This template uses environment variables for configuration. Modify `.env` file for environment-specific configurations.
+- **Environment Variables**: This template uses environment variables for configuration. Modify files in `./app/config/dev/` or `./app/config/live/` directories for environment-specific configurations.
 
 ## License
 
