@@ -32,8 +32,8 @@ if (action === 'install') {
         ExecStart=/usr/bin/npm run live
         Restart=always
         RestartSec=10
-        StandardOutput=append:${ROOT_PATH}/logs/service-output.log
-        StandardError=append:${ROOT_PATH}/logs/service-error.log
+        StandardOutput=append:${ROOT_PATH}/app/logs/service-output.log
+        StandardError=append:${ROOT_PATH}/app/logs/service-error.log
         SyslogIdentifier=${SERVICE_NAME}
 
         [Install]

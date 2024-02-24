@@ -3,7 +3,7 @@ import { resolve } from 'path'
 
 const logs = process.argv.slice(2)
 const ROOT_PATH = resolve()
-const LOG_LEVELS = ['log', 'debug', 'error', 'warn', 'info', 'crit', 'service-output', 'service-error']
+const LOG_LEVELS = ['log', 'debug', 'error', 'warn', 'info', 'crit']
 
 LOG_LEVELS.forEach((logLevel) => {
     const filePath = resolve(ROOT_PATH, 'app', 'logs', `${logLevel}.log`)
