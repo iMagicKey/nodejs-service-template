@@ -1,6 +1,6 @@
-# NodeJS Service Template
+# NextJS Template for Service (NodeJS)
 
-This repository provides a template for creating a NodeJS service. It includes configurations for environment setup, scripts for development, installation, and other useful utilities.
+This repository provides a template for creating a NextJS service with NodeJS backend. It includes configurations for environment setup, scripts for development, installation, and other useful utilities.
 
 ## Installation and Initialization
 
@@ -10,6 +10,10 @@ To get started with this template, follow these steps:
 
     ```bash
     git clone https://github.com/iMagicKey/nodejs-service-template.git
+    ```
+
+    ```bash
+    git checkout nextjs
     ```
 
 2. **Navigate to the Project Directory**: Move into the cloned directory:
@@ -24,7 +28,13 @@ To get started with this template, follow these steps:
     npm install
     ```
 
-4. **Initialize the Service**: Execute the following command to initialize the service. This will set up the necessary configurations:
+4. **Install Tailwind CSS**: Execute the following command to install Tailwind CSS:
+
+    ```bash
+    npm install -D tailwindcss
+    ```
+
+5. **Initialize the Service**: Execute the following command to initialize the service. This will set up the necessary configurations:
 
     ```bash
     npm run init
@@ -65,17 +75,27 @@ After the installation and initialization, you can use the following scripts pro
     npm run create-certs dev
     ```
 
-
-
 - **Clear Logs**:
 
     ```bash
     npm run clear-logs
     ```
 
+- **Build NextJS App**:
+
+    ```bash
+    npm run build
+    ```
+
+- **Lint NextJS App**:
+
+    ```bash
+    npm run lint
+    ```
+
 ## Configuration
 
-- **Environment Variables**: This template uses environment variables for configuration. Modify `.env` file for environment-specific configurations.
+- **Environment Variables**: This template uses environment variables for configuration. Modify files in `./app/config/dev/` or `./app/config/live/` directories for environment-specific configurations.
 
 ## License
 
