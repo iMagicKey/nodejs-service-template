@@ -8,6 +8,7 @@ const [SERVICE_NAME] = ROOT_PATH.split('/').slice(-1)
 const SERVICE_FILE_PATH = `${ROOT_PATH}/installed.service`
 
 const action = process.argv[2]
+const environment = process.argv[3] === 'dev' ? 'dev' : 'live'
 const SERVICE_LOG_LEVELS = ['service-output', 'service-error']
 
 if (action === 'install') {
@@ -29,7 +30,7 @@ if (action === 'install') {
 
         [Service]
         WorkingDirectory=${ROOT_PATH}
-        ExecStart=/usr/bin/npm run live
+        ExecStart=/usr/bin/npm run ${environment}
         Restart=always
         RestartSec=10
         StandardOutput=append:${ROOT_PATH}/app/logs/service-output.log
