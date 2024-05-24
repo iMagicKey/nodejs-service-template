@@ -7,7 +7,7 @@ export function start(interval) {
     shedulerInterval = setInterval(() => {
         const now = Date.now()
 
-        for (const taskName in tasks) {
+        Object.keys(tasks).forEach((taskName) => {
             if (now >= tasks[taskName].nextExecuteTime && tasks[taskName].inProcess === false) {
                 tasks[taskName].nextExecuteTime = Date.now() + tasks[taskName].interval
 
@@ -28,8 +28,12 @@ export function start(interval) {
                         Logger.perror('Sheduler', `Runtime error ${taskName}:`, err)
                     })
             }
-        }
+        })
     }, interval)
+}
+
+export function stop() {
+    clearInterval(shedulerInterval)
 }
 
 export function shedule(taskName, fn, interval, timeout = 10 * 1000) {
@@ -44,5 +48,6 @@ export function shedule(taskName, fn, interval, timeout = 10 * 1000) {
         timeout,
         nextExecuteTime: Date.now(),
     }
-    // return Logger.plog('Sheduler', `Task ${taskName} sheduled successful`)
+
+    return Logger.plog('Sheduler', `Task ${taskName} sheduled successful`)
 }

@@ -31,6 +31,7 @@ export default class Logger {
 
     static writeToConsole = (logEntry, data) => {
         if (this.config.output.includes('console')) {
+            // eslint-disable-next-line no-console
             console.log(logEntry, ...data)
         }
     }

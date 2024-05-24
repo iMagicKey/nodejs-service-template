@@ -133,3 +133,4 @@ app/config/dev/*
 app/config/live/certs/*
 !app/config/live/certs/.gitignore
 app/storage
+.debug
