@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
 import { Provider } from 'react-redux'
+import { useRouter } from 'next/router'
 import store from '@/store'
 import RootLayout from '@/layouts/Root'
-import { useRouter } from 'next/router'
+import WebSocketClient from '@/components/WebSocketClient'
 
 function MyApp({ Component, pageProps }) {
     const router = useRouter()
@@ -23,6 +24,7 @@ function MyApp({ Component, pageProps }) {
         <RootLayout>
             <Provider store={store}>
                 <Component {...pageProps} />
+                <WebSocketClient />
             </Provider>
         </RootLayout>
     )

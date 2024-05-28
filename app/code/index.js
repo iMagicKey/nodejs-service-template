@@ -1,7 +1,6 @@
 import startSheduler from './sheduler'
-
-// eslint-disable-next-line func-names
 import startWebServer from './web-server'
+import './ws-server'
 
 export default async () => {
     startWebServer()
