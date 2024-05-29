@@ -23,5 +23,9 @@
         "prettier": "^3.2.5"
     },
     "author": "DoubleFun",
-    "license": "MIT"
+    "license": "MIT",
+    "dependencies": {
+        "imagic-utils": "^1.0.1",
+        "imagic-web-server": "^1.0.3"
+    }
 }
