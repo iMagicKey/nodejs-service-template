@@ -4,15 +4,20 @@
     "description": "Template for Service (NodeJS)",
     "main": "app/index.js",
     "scripts": {
-        "live": "APP_ENV=live node --experimental-specifier-resolution=node app",
-        "dev": "APP_ENV=dev node --experimental-specifier-resolution=node app",
-        "init": "npm install && APP_ENV=dev node --experimental-specifier-resolution=node system/init",
-        "install-service": "node --experimental-specifier-resolution=node system/service install",
-        "uninstall-service": "node --experimental-specifier-resolution=node system/service uninstall",
-        "create-certs": "node --experimental-specifier-resolution=node system/certs",
-        "clear-logs": "node --experimental-specifier-resolution=node system/logs"
+        "live": "cross-env APP_ENV=live NODE_ENV=production node --import=specifier-resolution-node/register app",
+        "dev": "cross-env APP_ENV=dev NODE_ENV=development node --import=specifier-resolution-node/register app",
+        "init": "npm install && cross-env APP_ENV=dev node --import=specifier-resolution-node/register system/init",
+        "install-service": "node --import=specifier-resolution-node/register system/service install",
+        "uninstall-service": "node --import=specifier-resolution-node/register system/service uninstall",
+        "create-certs": "node --import=specifier-resolution-node/register system/certs",
+        "clear-logs": "node --import=specifier-resolution-node/register system/logs"
     },
     "type": "module",
+    "dependencies": {
+        "cross-env": "^7.0.3",
+        "imagic-utils": "^1.0.1",
+        "imagic-web-server": "^1.0.3"
+    },
     "devDependencies": {
         "eslint": "^8.57.0",
         "eslint-config-airbnb": "^19.0.4",
@@ -20,12 +25,12 @@
         "eslint-plugin-import": "^2.29.1",
         "eslint-plugin-node": "^11.1.0",
         "eslint-plugin-prettier": "^5.1.3",
-        "prettier": "^3.2.5"
+        "prettier": "^3.2.5",
+        "specifier-resolution-node": "^1.1.4"
     },
     "author": "DoubleFun",
     "license": "MIT",
-    "dependencies": {
-        "imagic-utils": "^1.0.1",
-        "imagic-web-server": "^1.0.3"
+    "engines": {
+        "node": ">=20"
     }
 }
