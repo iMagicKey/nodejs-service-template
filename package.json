@@ -4,18 +4,19 @@
     "description": "NextJS template for Service (NodeJS)",
     "main": "app/index.js",
     "scripts": {
-        "live": "APP_ENV=live NODE_ENV=production node --experimental-specifier-resolution=node app",
-        "dev": "APP_ENV=dev NODE_ENV=development node --experimental-specifier-resolution=node app",
-        "init": "npm install && APP_ENV=dev NODE_ENV=development node --experimental-specifier-resolution=node system/init",
-        "install-service": "node --experimental-specifier-resolution=node system/service install",
-        "uninstall-service": "node --experimental-specifier-resolution=node system/service uninstall",
-        "create-certs": "node --experimental-specifier-resolution=node system/certs",
-        "clear-logs": "node --experimental-specifier-resolution=node system/logs",
+        "live": "cross-env APP_ENV=live NODE_ENV=production node --import=specifier-resolution-node/register app",
+        "dev": "cross-env APP_ENV=dev NODE_ENV=development node --import=specifier-resolution-node/register app",
+        "init": "npm install && cross-env APP_ENV=dev node --import=specifier-resolution-node/register system/init",
+        "install-service": "node --import=specifier-resolution-node/register system/service install",
+        "uninstall-service": "node --import=specifier-resolution-node/register system/service uninstall",
+        "create-certs": "node --import=specifier-resolution-node/register system/certs",
+        "clear-logs": "node --import=specifier-resolution-node/register system/logs",
         "build": "next build",
         "lint": "next lint"
     },
     "type": "module",
     "dependencies": {
+        "cross-env": "^7.0.3",
         "imagic-utils": "^1.0.1",
         "imagic-web-server": "^1.0.0",
         "next": "^14.2.3",
@@ -39,7 +40,8 @@
         "eslint-plugin-prettier": "^5.1.3",
         "postcss": "^8.4.38",
         "prettier": "^3.2.5",
-        "tailwindcss": "^3.4.3"
+        "tailwindcss": "^3.4.3",
+        "specifier-resolution-node": "^1.1.4"
     },
     "postcss": {
         "plugins": {
@@ -48,5 +50,8 @@
         }
     },
     "author": "DoubleFun",
-    "license": "MIT"
+    "license": "MIT",
+    "engines": {
+        "node": ">=20"
+    }
 }
