@@ -4,9 +4,9 @@
     "description": "Template for Service (NodeJS)",
     "main": "app/index.js",
     "scripts": {
-        "live": "cross-env APP_ENV=live NODE_ENV=production node --import=specifier-resolution-node/register app",
-        "dev": "cross-env APP_ENV=dev NODE_ENV=development node --import=specifier-resolution-node/register app",
-        "init": "npm install && cross-env APP_ENV=dev node --import=specifier-resolution-node/register system/init",
+        "live": "node --import=specifier-resolution-node/register --env-file=.env app",
+        "dev": "node --import=specifier-resolution-node/register --env-file=.env.dev app",
+        "init": "npm install && node --import=specifier-resolution-node/register system/init",
         "install-service": "node --import=specifier-resolution-node/register system/service install",
         "uninstall-service": "node --import=specifier-resolution-node/register system/service uninstall",
         "create-certs": "node --import=specifier-resolution-node/register system/certs",
@@ -14,7 +14,6 @@
     },
     "type": "module",
     "dependencies": {
-        "cross-env": "^7.0.3",
         "imagic-utils": "^1.0.1",
         "imagic-web-server": "^1.0.3"
     },
