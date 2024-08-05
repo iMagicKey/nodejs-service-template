@@ -14,3 +14,16 @@ LOG_LEVELS.forEach((logLevel) => {
     const filePath = `${ROOT_PATH}/app/logs/${logLevel}.log`
     if (!existsSync(filePath)) writeFileSync(filePath, '')
 })
+
+const ENV_FILES = ['.env', '.env.dev']
+ENV_FILES.forEach((fileName, index) => {
+    const filePath = `${ROOT_PATH}/${fileName}`
+    if (!existsSync(filePath)) {
+        if (index === 0) {
+            writeFileSync(filePath, 'APP_ENV=live\nNODE_ENV=production')
+        }
+        if (index === 1) {
+            writeFileSync(filePath, 'APP_ENV=dev\nNODE_ENV=development')
+        }
+    }
+})
