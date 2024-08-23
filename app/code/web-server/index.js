@@ -1,4 +1,5 @@
 import next from 'next'
+import path from 'path'
 import getConfig from '../../libs/get-config'
 
 import server from './server'
@@ -12,6 +13,7 @@ export default async () => {
         experimentalHttpsServer: true,
         dev: process.env.APP_ENV !== 'live',
         port: config.web.port,
+        dir: path.resolve('src'),
     })
     await app.prepare()
 

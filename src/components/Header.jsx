@@ -15,8 +15,8 @@ function Header() {
                         </span>
                     </Link>
                 </div>
-                <Link className="cursor-pointer text-white truncate" href="/affiliate">
-                    Affiliate
+                <Link className="cursor-pointer text-white truncate" href="/quotes">
+                    Quotes
                 </Link>
             </div>
         </div>

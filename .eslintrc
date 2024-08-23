@@ -6,31 +6,39 @@
         "semi": "off",
         "no-unused-vars": "warn",
         "no-console": "off",
-        "import/extensions": "off"
+        "import/extensions": "off",
     },
     "env": {
-        "es6": true
+        "es6": true,
     },
     "overrides": [
         {
-            "files": ["**/src/**/*.{js,jsx}"],
-            "rules": {}
+            "files": ["src/**/*.{js,jsx}"],
+            "settings": {
+                "import/resolver": {
+                    "node": {
+                        "paths": ["src"],
+                        "extensions": [".js", ".jsx", ".ts", ".tsx"],
+                    },
+                },
+            },
+            "rules": {},
         },
         {
-            "files": ["**/app/**/*.{js,jsx}"],
+            "files": ["app/**/*.{js,jsx}"],
             "extends": ["airbnb", "eslint-config-airbnb-base", "prettier"],
             "rules": {
                 "prettier/prettier": ["error"],
-                "max-len": ["error", { "code": 150 }]
+                "max-len": ["error", { "code": 150 }],
             },
             "parserOptions": {
-                "ecmaVersion": 2022
+                "ecmaVersion": 2022,
             },
             "env": {
                 "es6": true,
-                "node": true
+                "node": true,
             },
-            "plugins": ["prettier", "node"]
-        }
-    ]
+            "plugins": ["prettier", "node"],
+        },
+    ],
 }
