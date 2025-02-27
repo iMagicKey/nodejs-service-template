@@ -10,7 +10,6 @@ const nextConfig = {
         config.resolve.alias['@'] = path.resolve('src')
         return config
     },
-    swcMinify: true,
 }
 
 export default nextConfig

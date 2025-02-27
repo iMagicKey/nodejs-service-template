@@ -7,19 +7,20 @@ import './middleware'
 import './routes'
 
 export default async () => {
-    const config = getConfig()
+    const port = Number(process.env.WEB_PORT)
+
     const app = next({
         customServer: true,
         experimentalHttpsServer: true,
         dev: process.env.APP_ENV !== 'live',
-        port: config.web.port,
+        port,
         dir: path.resolve('src'),
     })
     await app.prepare()
 
     server.nextRequestHandler = app.getRequestHandler()
 
-    server.listen({ port: global.config.web.port }, () => {
-        global.logger.log(`Server started on port ${global.config.web.port}`)
+    server.listen({ port }, () => {
+        global.logger.log(`Server started on port ${port}`)
     })
 }

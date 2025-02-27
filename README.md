@@ -1,4 +1,4 @@
-# NextJS Template for Service (NodeJS)
+# NodeJS + NextJS Service Template
 
 This repository provides a template for creating a NextJS service with NodeJS backend. It includes configurations for environment setup, scripts for development, installation, and other useful utilities.
 
@@ -95,7 +95,7 @@ After the installation and initialization, you can use the following scripts pro
 
 ## Configuration
 
-- **Environment Variables**: This template uses environment variables for configuration. Modify files in `./app/config/dev/` or `./app/config/live/` directories for environment-specific configurations.
+- **Environment Variables**: This template uses environment variables for configuration. The `./app/config/dev/` and `./app/config/live/` directories are used for static settings. For more flexible and dynamic configurations, it is recommended to use `.env` and `.env.dev` files.
 
 ## License
 
@@ -103,6 +103,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Author
 
-Created by DoubleFun.
+Created by MagicKey with support from DoubleFun.
 
 Feel free to modify and adapt this template to suit your project needs! If you encounter any issues or have suggestions for improvements, please feel free to open an issue or submit a pull request.
