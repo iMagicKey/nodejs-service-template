@@ -1,15 +1,18 @@
 import { writeFileSync, existsSync, rmSync } from 'fs'
-import { resolve } from 'path'
 import { exit } from 'process'
 import { execSync } from 'child_process'
+import path from 'path'
 
-const ROOT_PATH = resolve()
+const ROOT_PATH = path.resolve()
 const [SERVICE_NAME] = ROOT_PATH.split('/').slice(-1)
 const SERVICE_FILE_PATH = `${ROOT_PATH}/installed.service`
 
 const action = process.argv[2]
 const environment = process.argv[3] === 'dev' ? 'dev' : 'live'
 const SERVICE_LOG_LEVELS = ['service-output', 'service-error']
+
+const NODE_PATH = process.execPath
+const NODE_DIR = path.dirname(NODE_PATH)
 
 if (action === 'install') {
     if (existsSync(SERVICE_FILE_PATH)) {
@@ -30,7 +33,7 @@ if (action === 'install') {
 
         [Service]
         WorkingDirectory=${ROOT_PATH}
-        ExecStart=/usr/bin/npm run ${environment}
+        ExecStart=${path.join(NODE_DIR, 'npm')} run ${environment}
         Restart=always
         RestartSec=10
         StandardOutput=append:${ROOT_PATH}/app/logs/service-output.log

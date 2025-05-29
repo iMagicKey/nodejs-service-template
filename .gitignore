@@ -135,3 +135,5 @@ app/config/live/certs/*
 !app/config/live/certs/.gitignore
 app/storage
 .debug
+installed.service
+TODO
