@@ -9,13 +9,13 @@ server.use(async (req, res, next) => {
         })
 
         req.on('end', () => {
-            const data = chunks.join()
+            const data = Buffer.concat(chunks).toString()
             if (data) {
                 if (utils.isJSON(data)) {
                     req.json = JSON.parse(data)
                     next()
                 } else {
-                    res.jsonError(400, 'Invalid JSON')
+                    res.jsonError('INVALID_JSON', null)
                 }
             } else {
                 next()
