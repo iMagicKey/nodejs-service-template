@@ -1,9 +1,9 @@
 {
-    "extends": ["airbnb", "eslint-config-airbnb-base", "prettier"],
+    "extends": ["airbnb-base", "eslint-config-airbnb-base", "prettier"],
     "rules": {
         "indent": ["error", 4, { "SwitchCase": 1 }],
         "semi": "off",
-        "prettier/prettier": ["error"],
+        "prettier/prettier": ["error", { "endOfLine": "auto" }],
         "no-unused-vars": "warn",
         "max-len": ["error", { "code": 150 }],
         "no-console": "off",
@@ -17,5 +17,6 @@
         "es6": true,
         "node": true
     },
+    "ignorePatterns": ["app/data/", "app/storage/", "app/logs/"],
     "plugins": ["import", "prettier", "node"]
 }
